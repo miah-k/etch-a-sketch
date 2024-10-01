@@ -15,13 +15,29 @@ function createGrid(numOfSquares = 16){
     }
 }
 
+let clicked = false; 
+
 function checkHover(){
     const divContainer = document.querySelector("#container"); 
     divContainer.addEventListener("mouseover", function(e){
         let myDiv = document.getElementById(e.target.id); 
-        myDiv.style.backgroundColor = generateRGB();  
+        myDiv.style.backgroundColor = "black";  
+        
+    }); 
+    divContainer.addEventListener("click", function(){
+        divContainer.addEventListener("mouseover", function(e){
+            let myDiv = document.getElementById(e.target.id); 
+            if(clicked == false){
+                myDiv.style.backgroundColor = generateRGB(); 
+            }
+            else{
+                myDiv.style.backgroundColor = "black";  
+            }
+        }); 
+        clicked = !clicked; 
     }); 
 }
+
 
 function resetBoard(){
     const bttn = document.querySelector("#reset-button"); 
