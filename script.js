@@ -19,7 +19,7 @@ function checkHover(){
     const divContainer = document.querySelector("#container"); 
     divContainer.addEventListener("mouseover", function(e){
         let myDiv = document.getElementById(e.target.id); 
-        myDiv.style.backgroundColor="black"; 
+        myDiv.style.backgroundColor = generateRGB();  
     }); 
 }
 
@@ -47,6 +47,14 @@ function removeGrid(){
     }
 }
 
+function generateRGB(){
+    let redVal = Math.floor(Math.random() * 256); 
+    let greenVal = Math.floor(Math.random() * 256); 
+    let blueVal = Math.floor(Math.random() * 256); 
+    return (`rgb(${redVal}, ${greenVal}, ${blueVal})`);  
+}
+
+generateRGB(); 
 checkHover();
 resetBoard();  
 createGrid(); 
