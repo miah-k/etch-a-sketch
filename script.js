@@ -20,4 +20,15 @@ function checkHover(){
     }); 
 }
 
-checkHover(); 
+function resetBoard(){
+    const bttn = document.querySelector("#reset-button"); 
+    bttn.addEventListener("click", function(){
+        let squareAmnt = prompt("How many number of squares per side?"); 
+        if(squareAmnt >= 100){
+            squareAmnt = prompt("Enter an amount less than 100"); 
+        }
+    }); 
+}
+
+checkHover();
+resetBoard();  
