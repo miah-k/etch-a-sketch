@@ -1,14 +1,17 @@
 
-let offset = 0; 
-for(let i = 0; i < 16; i++){
-    for(let j = 0; j < 16; j++){
-        const divSquare = document.createElement('div'); 
-        divSquare.style.height= "8px";
-        divSquare.style.width = "8px"; 
-        divSquare.style.backgroundColor = "yellow";  
-        divSquare.id =i+offset; 
-        document.getElementById("container").appendChild(divSquare); 
-        offset++; 
+function createGrid(numOfSquares = 16){
+    let offset = 0; 
+    for(let i = 0; i < numOfSquares; i++){
+        for(let j = 0; j < numOfSquares; j++){
+            const divSquare = document.createElement('div'); 
+            let squareMeasurement = 128/numOfSquares; 
+            divSquare.style.height= `${squareMeasurement}px`;
+            divSquare.style.width = `${squareMeasurement}px`; 
+            divSquare.style.backgroundColor = "yellow";  
+            divSquare.id =i+offset; 
+            document.getElementById("container").appendChild(divSquare); 
+            offset++; 
+        }
     }
 }
 
@@ -27,8 +30,23 @@ function resetBoard(){
         if(squareAmnt >= 100){
             squareAmnt = prompt("Enter an amount less than 100"); 
         }
+        removeGrid(); 
+        if(squareAmnt == null){
+            createGrid(); 
+        }
+        else{
+            createGrid(squareAmnt); 
+        }
     }); 
+}
+
+function removeGrid(){
+    const parentDiv = document.querySelector("#container"); 
+    while (parentDiv.firstChild) {
+        parentDiv.removeChild(parentDiv.firstChild);
+    }
 }
 
 checkHover();
 resetBoard();  
+createGrid(); 
